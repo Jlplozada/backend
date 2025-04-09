@@ -30,7 +30,27 @@ class Categoria {
         }        
         
     }
+    async getById(id){
+        try {
+            const [rows] = connection.query("select * from categorias where id =?",[id]);
+            if (rows.length===0) {
+                throw new Error ("categoria no encontrada")
+            }
+            return rows[0];
+        } catch (error) {
+            throw new Error("Error al obtener la categoria");
+        }
 
+    }
+    estaRelacionadaConProductos(Categoria_id){
+        
+    }
+    async delete(id){
+        let datos=this.getById(id);
+        console.log(datos);
+        
+    }
+    
 }
 
 export default Categoria;

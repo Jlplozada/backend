@@ -21,7 +21,6 @@ class CategoriaController {
         const {nombre, descripcion} = req.body;
         const OBJCategoria = new Categoria();
         const categoria = await OBJCategoria.create(nombre, descripcion);
-
         return  res.json(categoria);
     }
 }
