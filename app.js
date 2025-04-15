@@ -18,6 +18,6 @@ app.use('/categorias', categoriasRoutes);
 
 
 app.listen(3000,()=>{
-    console.log("OK .... :D");
+    console.log("OK . . . .:D");
     
 })
