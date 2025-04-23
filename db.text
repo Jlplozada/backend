@@ -1,1 +1,29 @@
-...
+CREATE USER if not exists 'usuario_2824003' @'localHost' IDENTIFIED BY 'Aprendiz2024';
+drop database if exists node_2824003;
+create database node_2824003;
+GRANT ALL PRIVILEGES ON node_2824003.* TO usuario_2824003 @'localHost'; 
+FLUSH PRIVILEGES;
+use node_2824003;
+
+drop table if exists categorias;
+create table categorias(
+id int auto_increment primary key,
+nombre varchar(255) not null,
+descripcion text,
+created_at timestamp default current_timestamp, #fecha del momento con current
+update_at timestamp default current_timestamp on update current_timestamp
+);
+describe categorias;
+
+drop table if exists productos;
+
+create table productos(
+id int auto_increment primary key,
+nombre varchar(255) not null,
+descripcion text,
+precio decimal(10,2),
+categoria_id int,
+created_at timestamp default current_timestamp, #fecha del momento con current
+update_at timestamp default current_timestamp on update current_timestamp, #actualizacion
+foreign key(categoria_id) references categorias(id) on delete set null
+);
